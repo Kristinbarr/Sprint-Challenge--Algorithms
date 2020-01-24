@@ -51,9 +51,7 @@ class SortingRobot:
 
     def swap_item(self):
         """
-        The robot swaps its currently held item with the list item in front
-        of it.
-        This will increment the time counter by 1.
+        The robot swaps its currently held item with the list item in front of it. This will increment the time counter by 1.
         """
         self._time += 1
         # Swap the held item with the list item at the robot's position
@@ -96,8 +94,42 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # robot starts at position 0 and holds None
+        # move to the right, compare and swap, if a swap is made, turn light on
+        # once at the far right, if light is on, turn it off
+        # else return arr bc it's sorted
+        # start moving left, compare/swap, if swap is made, turn light on
+        # if either right or left side hits and light is off, return arr
+
+        # GOING RIGHT
+        while self.can_move_right():
+
+            # if holding nothing, swap with the curr position, move right
+            if self.compare_item() == None:
+                self.swap_item()
+                self.move_right()
+            # if holding item is less, swap, turn light on, move right
+            elif self.compare_item() == -1:
+                self.swap_item()
+                self.set_light_on()
+                self.move_right()
+            # of holding is greater, move right
+            elif self.compare_item() == 1:
+                self.move_right()
+
+            # if we get to the far right, turn light off
+
+
+        if self.can_move_right() == False and self.light_is_on():
+            self.set_light_off()
+
+        # GOING LEFT
+        while self.can_move_left():
+
+
+        if self.can_move_left() == False and self.light_is_on():
+            self.set_light_off()
+
 
 
 if __name__ == "__main__":
