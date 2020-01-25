@@ -94,41 +94,98 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # robot starts at position 0 and holds None
+        # if light is on, keep looping
+            # while loop if we can move right
+                # if compare is more and can't move right, swap
+                # if compare is less, swap, turn on light
+                # if swap
+                # else swap
+                # move right
+
+            # while loop if we can move left
+                # if compare is none, swap
+                # if compare is more and can't move left, swap
+                # if compare is more, swap, turn on light
+                # move left
+
+        print()
+        print('START', self._list)
+        print()
+
+        self.set_light_on()
+
+        while self.light_is_on():
+
+            # reset light
+            self.set_light_off()
+
+            print("GOING RIGHT")
+            while self.can_move_right():
+                # if holding is lesser, swap None back
+                if self.compare_item() == -1:
+                    self.move_left()
+                    self.swap_item()
+                    print('lesser',self._list, '...', self._position,self._item)
+                # if holding is greater, swap, turn on light
+                elif self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.set_light_on()
+                    print('greater:',self._list,'...',self._position,self._item)
+                # if compare is none
+                elif self.compare_item() == None:
+                    self.swap_item()
+                    print('none:',self._list,'..', self._position, self._item)
+                self.move_right()
+
+            # when compare is at the right end, its not included in while loop
+            if self.compare_item() == 1 and self.can_move_right() == False:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                # self.set_light_on()
+
+            print('right finished', self._list, self.light_is_on())
+            print()
+
+            print("GOING LEFT")
+            while self.can_move_left():
+                # if holding is lower, swap, turn light on
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.move_right()
+                    self.swap_item()
+                    self.set_light_on()
+                    print('lower:', self._list,'...',self._position, self._item)
+                # if holding is greater, swap none previous position
+                elif self.compare_item() == 1:
+                    self.move_right()
+                    self.swap_item()
+                    print('greater',self._list,'...',self._position,self._item)
+                # if compare is none
+                elif self.compare_item() == None:
+                    self.swap_item()
+                    print('none:',self._list,'...', self._position, self._item)
+                self.move_left()
+
+            if self.compare_item() == -1 and self.can_move_left() == False:
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+                # self.set_light_on()
+
+            print('left finished', self._list, self.light_is_on())
+            print()
+
+            # if self.light_is_on():
+            #     break
+
         # move to the right, compare and swap, if a swap is made, turn light on
         # once at the far right, if light is on, turn it off
         # else return arr bc it's sorted
         # start moving left, compare/swap, if swap is made, turn light on
         # if either right or left side hits and light is off, return arr
-
-        # GOING RIGHT
-        while self.can_move_right():
-
-            # if holding nothing, swap with the curr position, move right
-            if self.compare_item() == None:
-                self.swap_item()
-                self.move_right()
-            # if holding item is less, swap, turn light on, move right
-            elif self.compare_item() == -1:
-                self.swap_item()
-                self.set_light_on()
-                self.move_right()
-            # of holding is greater, move right
-            elif self.compare_item() == 1:
-                self.move_right()
-
-            # if we get to the far right, turn light off
-
-
-        if self.can_move_right() == False and self.light_is_on():
-            self.set_light_off()
-
-        # GOING LEFT
-        while self.can_move_left():
-
-
-        if self.can_move_left() == False and self.light_is_on():
-            self.set_light_off()
 
 
 
