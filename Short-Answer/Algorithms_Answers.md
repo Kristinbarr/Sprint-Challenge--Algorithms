@@ -2,19 +2,32 @@
 
 ## Exercise I
 
-a) Linear Time
-As it n grows, it will loop as many time in direct relation to the input n. The variable 'a' is updating similarly to the conditions in the while loop condition. If n is 2, it loops 1 time. If n is 3, it loops 2 times. If n is 4, it loops 3 times, etc.
+n = 1 --> 1
+a -> 0 + 1 * 1 = 1
+
+n = 2 --> 8
+a -> 0 + 2 * 2 = 4
+a -> 4 + 2 * 2 = 8
+
+n = 3 --> 27
+a -> 0 + 3 * 3 = 9
+a -> 9 + 3 * 3 = 18
+a -> 18 + 3 * 3 = 27
+
+n = 4 --> 64
+a -> 0 + 4 * 4 = 16
+a -> 16 + 4 * 4 = 32
+a -> 32 + 4 * 4 = 48
+a -> 48 + 4 * 4 = 64
+
+a) O(n) Linear - The number of iterations is dependant on the input directly. Adding up a number to the power of 2 while looping until it's great than the number to the power of 3 will always be one step behind and loop for the value number.
 
 
-b) Log-Linear Time
-The first for loop iteration count is directly dependant on n. The inner while loop is logarithmic since the conditional logic decreases logarithmically with n. The outer loop still has to run for n times but the inner loop is logarithmic.
+b) O(n log n) Log-linear - The number of iterations will be linear and dependant upon the input and also iterate logarithmically according to input since the conditional for the nested loop is depcreasing logarithmically.
 
-c) Constant Time
-It is only performing 1 operation. The space complexity is Linear and based on the input.
+
+c) O(n) Linear - The number of iterations will be dependant on the input until it reaches the base case.
 
 ## Exercise II
 
-Take the middle of the height of floors and drop the egg from there. If the egg breaks, check the middle floor between there and the bottom. If it doesn't break, check the middle floor between there and th top floor. Keep splitting until you find the floor it break on.
-
-The time complexity is O(log(n)) since we are cutting the searching choices in half as we search for the floor that breaks the egg.
-
+O(log(n)) Logarithmic - Going floor by floor will work but the strategy can be improved. The floors are essentially 'in order' since we know that inertia will build up at a predictable rate. We can drop the egg from the middle floor and depending on the outcome, we can identify that the floor it breaks on will be either a higher or lower floor depending on if it breaks. Then we can drop another egg from the middle of that half of the total floors and repeat until the floor is found. 
