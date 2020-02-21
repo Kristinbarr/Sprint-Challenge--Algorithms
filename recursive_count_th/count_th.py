@@ -23,4 +23,4 @@ def count_th(word):
     return count
     
 
-print(count_th('abcthxyz'))
+# print(count_th('abcthxyz'))
